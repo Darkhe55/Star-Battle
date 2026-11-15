@@ -1,0 +1,22 @@
+/* 自动生成，勿手改。运行 npm run gen 重新生成。 */
+export interface RawPuzzle {
+  id: string
+  name: string
+  width: number
+  height: number
+  difficulty: 'easy' | 'medium' | 'hard' | 'custom'
+  series: string
+  /** 题面编码串（格式由 src/game/puzzles.ts 解析） */
+  board: string
+  /** 参考解编码串（没有则留空） */
+  solution?: string
+}
+
+export const RAW_PUZZLES: RawPuzzle[] = [
+  { id: "star-battle-6x6-k1-n4cnb5", name: "星海初航", width: 6, height: 6, difficulty: 'easy', series: "入门", board: "0001112011112243132443332444332544331", solution: "221222222212122222222221222122212222" },
+  { id: "star-battle-7x7-k1-n4cnb6", name: "七域星图", width: 7, height: 7, difficulty: 'easy', series: "入门", board: "21111302113333223333342433364444436444555645555661", solution: "2222221221222212222222222122212222222212222222212" },
+  { id: "star-battle-8x8-k1-n4cnb7", name: "星域回廊", width: 8, height: 8, difficulty: 'medium', series: "进阶", board: "10000222113332421133344213355444665554446666555467777544666677771", solution: "2221222221222222222222212212222222222212222212221222222222222122" },
+  { id: "star-battle-9x9-k1-n4cnb8", name: "九宫星阵", width: 9, height: 9, difficulty: 'medium', series: "进阶", board: "3333000013400000113444220023344422223444477225444447275546847778588847778887777771", solution: "222222122222222221222221222212222222222212222122222222222122222222222212221222222" },
+  { id: "star-battle-10x10-k2-n4cnb9", name: "双星迷航", width: 10, height: 10, difficulty: 'hard', series: "挑战", board: "99333334449933333334999955333400055558840107718844011171188800777118887777212666777221226677722122662", solution: "2122222212222212122221222222212221212222122222212222212122221222222122221222222122221212222212222212" },
+  { id: "star-battle-10x10-k2-n4cnba", name: "双星终局", width: 10, height: 10, difficulty: 'hard', series: "挑战", board: "69998888006999488880669944000077444483017747448301577772333159972233115592222313599992331355592223332", solution: "1222222212222122122212222222122212122222222222122122121222222222222121212221222222212221222122212222" },
+]
