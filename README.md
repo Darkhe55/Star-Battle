@@ -84,3 +84,21 @@ npm run check     # 审计题库
 npm run verify    # 参考解、逻辑回放与交互验证
 npm run audit     # 逐题审计逻辑解题
 ```
+
+## 图片导入
+
+`npm run import-image -- <图片路径>` 可以自动识别星之战（Star Battle）题图：黑像素投影定位网格线，按每条边界的线宽区分细线（普通网格）与粗线（区域边界），四连通洪泛得到区域编号。
+
+```bash
+npm run import-image -- 题图.png --dry                     # 只识别与预览
+npm run import-image -- 题图.png --name "我的星之战" --append     # 追加到题库
+npm run import-image -- 题图.png --append --verify --stars 2   # 2★ 变体 + 唯一解检查
+```
+
+| 参数 | 说明 |
+|------|------|
+| `--size N` / `--width W --height H` | 覆盖棋盘尺寸 |
+| `--stars K` | 每行/列/区域的星星数（默认 1） |
+| `--thick N` | 手动指定细/粗线阈值（区域识别不准时） |
+| `--name` / `--id` | 题库名字 / id |
+| `--append` / `--verify` / `--dry` | 写入题库 / 唯一解检查 / 只识别 |

@@ -3,6 +3,7 @@
  */
 
 import { RAW_PUZZLES } from './puzzles-data'
+import { IMPORTED_PUZZLES } from './imported-puzzles'
 import {
   asStarPuzzle,
   decodeBoard,
@@ -12,10 +13,13 @@ import {
   type StarState,
 } from './types'
 
+/** 内置题库 + 识图导入题库（imported-puzzles.ts 由 scripts/import-image.mjs 追加） */
+const ALL_RAW = [...RAW_PUZZLES, ...IMPORTED_PUZZLES]
+
 export const builtinPuzzles: StarPuzzle[] = []
 const solutions = new Map<string, number[]>()
 
-for (const raw of RAW_PUZZLES) {
+for (const raw of ALL_RAW) {
   const size = raw.width * raw.height
   const decoded = decodeBoard(raw.board, size)
   if (!decoded) {
