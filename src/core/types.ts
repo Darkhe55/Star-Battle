@@ -117,6 +117,11 @@ export interface CustomSupport {
   valueCycle: Array<number | null>
   /** 编辑器按键 0-9 对应的值：返回 undefined 表示该键不用 */
   keyForDigit(digit: number): number | null | undefined
+  /**
+   * 编辑器字母键 a-z 对应的值（可选；用于区域号 / 线索数超过 9 的题板）。
+   * 返回 undefined 表示该键不用。
+   */
+  keyForChar?(ch: string, current: number | null): number | null | undefined
   /** 编辑器格子显示文案 */
   cellLabel(v: number | null): string
   /** 编辑器格子附加 CSS 类（可选） */

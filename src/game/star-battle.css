@@ -105,3 +105,83 @@
 .custom-cell.r9 {
   background: hsl(105 26% 90%);
 }
+/* 10×10 以上的题板区域数会超过 9；自定义题板用字母键填 10-35 号区域，
+   配色沿用 core/board.ts 的 REGION_PALETTE 循环取色。 */
+.custom-cell.r10 {
+  background: hsl(150 32% 93%);
+}
+.custom-cell.r11 {
+  background: hsl(35 44% 93%);
+}
+.custom-cell.r12 {
+  background: hsl(210 36% 93%);
+}
+.custom-cell.r13 {
+  background: hsl(280 28% 94%);
+}
+.custom-cell.r14 {
+  background: hsl(0 36% 94%);
+}
+.custom-cell.r15 {
+  background: hsl(180 30% 92%);
+}
+.custom-cell.r16 {
+  background: hsl(60 36% 93%);
+}
+.custom-cell.r17 {
+  background: hsl(320 26% 94%);
+}
+.custom-cell.r18 {
+  background: hsl(105 26% 93%);
+}
+.custom-cell.r19 {
+  background: hsl(15 40% 93%);
+}
+.custom-cell.r20 {
+  background: hsl(240 24% 94%);
+}
+.custom-cell.r21 {
+  background: hsl(195 32% 92%);
+}
+.custom-cell.r22 {
+  background: hsl(150 32% 87%);
+}
+.custom-cell.r23 {
+  background: hsl(35 44% 87%);
+}
+.custom-cell.r24 {
+  background: hsl(210 36% 87%);
+}
+.custom-cell.r25 {
+  background: hsl(280 28% 88%);
+}
+.custom-cell.r26 {
+  background: hsl(0 36% 88%);
+}
+.custom-cell.r27 {
+  background: hsl(180 30% 86%);
+}
+.custom-cell.r28 {
+  background: hsl(60 36% 87%);
+}
+.custom-cell.r29 {
+  background: hsl(320 26% 88%);
+}
+.custom-cell.r30 {
+  background: hsl(105 26% 87%);
+}
+.custom-cell.r31 {
+  background: hsl(15 40% 87%);
+}
+.custom-cell.r32 {
+  background: hsl(240 24% 88%);
+}
+.custom-cell.r33 {
+  background: hsl(195 32% 86%);
+}
+.custom-cell.r34 {
+  background: hsl(160 26% 84%);
+}
+.custom-cell.r35 {
+  background: hsl(45 38% 85%);
+}

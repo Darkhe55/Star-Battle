@@ -215,6 +215,17 @@ export class CustomEditor {
         return true
       }
     }
+    // 字母键：区域号 / 线索数超过 9 时用于直接输入（a=10, b=11, …）
+    if (this.adapter.custom.keyForChar && /^[a-zA-Z]$/.test(k)) {
+      const cur = this.grid[this.cursor] ?? null
+      const value = this.adapter.custom.keyForChar(k, cur)
+      if (value !== undefined) {
+        e.preventDefault()
+        this.setCell(this.cursor, value)
+        this.moveCursor(1, 0)
+        return true
+      }
+    }
     if (k === '.' || k === 'Backspace' || k === 'Delete' || k === ' ') {
       e.preventDefault()
       this.setCell(this.cursor, null)

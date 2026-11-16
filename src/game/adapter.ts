@@ -50,7 +50,16 @@ const meta = {
   customMaxH: 30,
 }
 
-const VALUE_CYCLE: Array<number | null> = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+/** 区域编号上限：base36 编码的题面支持 0..35，自定义题板用 1..35 号区域（1-9 数字键 / a-z 字母键直填） */
+const MAX_REGION = 35
+const VALUE_CYCLE: Array<number | null> = [null, ...Array.from({ length: MAX_REGION }, (_, i) => i + 1)]
+
+/** 区域号 → 编辑器显示：1-9 用数字，10-35 用小写字母 */
+function regionLabel(v: number | null): string {
+  if (v == null) return '·'
+  if (v <= 9) return String(v)
+  return String.fromCharCode('a'.charCodeAt(0) + (v - 10))
+}
 
 const custom: CustomSupport = {
   valueCycle: VALUE_CYCLE,
@@ -61,11 +70,18 @@ const custom: CustomSupport = {
     return undefined
   },
 
-  cellLabel: (v) => (v == null ? '·' : String(v)),
+  /** 字母键 a-z 直填 10..35 号区域（10×10 以上的星之战题板区域数会超过 9） */
+  keyForChar: (ch) => {
+    const v = ch.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0)
+    if (v < 0 || v >= 26) return undefined
+    return 10 + v
+  },
+
+  cellLabel: (v) => regionLabel(v),
 
   cellClass: (v) => (v == null ? '' : `r${v}`),
 
-  hint: '数字 1-9 表示区域编号：在网格里画出区域，载入后每行每列每区域各放 1 颗星。',
+  hint: '数字 1-9 表示区域编号；棋盘大于 9×9 时区域数会超过 9，用字母键 a-z 直填 10-35 号区域（点格循环 空→1→2…→35）。载入后每行每列每区域各放 K 颗星。',
 
   toGrid: (p) => {
     const regions = (p as StarPuzzle).regions
