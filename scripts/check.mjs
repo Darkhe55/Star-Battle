@@ -82,6 +82,8 @@ for (const e of entries) {
   }
 
   const plan = solveByRules(regions, k, size, e.width, e.height, true, 240)
+  // 附加信息（不改变通过/警告判定）：纯定式（不用反证）能否推满
+  const pure = solveByRules(regions, k, size, e.width, e.height, false, 240)
   if (!plan.ok || !plan.solution) {
     console.warn(`[check] ${e.id} 规则无法单独推满（需要回溯）`)
     warnings++
@@ -92,7 +94,8 @@ for (const e of entries) {
 
   const starCount = solution.filter((v) => v === STAR).length
   console.log(
-    `[check] ${e.id} ${e.width}×${e.height} K=${k} 区域 ${regionCount} · 星星 ${starCount} · 解唯一 · 逻辑${plan.saturated ? '可推满' : '需回溯'} · ${counted.nodes} 节点`,
+    `[check] ${e.id} ${e.width}×${e.height} K=${k} 区域 ${regionCount} · 星星 ${starCount} · 解唯一 · 逻辑${plan.saturated ? '可推满' : '需回溯'} · ${counted.nodes} 节点` +
+      ` · ${plan.usedProbing ? '用到反证' : '纯定式'} · 纯定式${pure.saturated ? '可推满' : '未推满'}`,
   )
 }
 

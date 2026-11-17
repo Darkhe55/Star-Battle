@@ -15,9 +15,13 @@ import {
 
 const RULE_INFO: Record<RuleKind | 'probe' | 'search', { rule: number; label: string }> = {
   adj: { rule: 1, label: '星星八邻接的格子不能放星' },
-  count: { rule: 2, label: '行列/区域星星数限制' },
-  probe: { rule: 3, label: '反证：另一选择会立刻矛盾' },
-  search: { rule: 4, label: '回溯试探：该格最终是这一状态' },
+  block: { rule: 2, label: '任意 2×2 至多 1 颗星' },
+  count: { rule: 3, label: '行/列/区域星星数限制' },
+  unit: { rule: 4, label: '单元候选排列：所有合法摆法都含/都不含的格' },
+  band: { rule: 5, label: '双行/双列带精确枚举：相邻两行/两列的摆法取交集' },
+  hall: { rule: 6, label: '区域-行列配额交叉（Hall 约束）' },
+  probe: { rule: 7, label: '反证：另一选择会立刻矛盾' },
+  search: { rule: 8, label: '回溯试探：该格最终是这一状态' },
 }
 
 function fallbackSolve(
